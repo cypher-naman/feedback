@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>feedback_form</title>
+  </head>
+  <body>
+    <h1>this is the feedback_form page!.</h1>
+    <form action="" method="POST">
+    {% csrf_token %}
+    {{ formset.FeedbackForm }}
+    <table border="1">
+      <tr>
+        <th>Teacher Name</th>
+        <th>Subject Name</th>
+        <th>Punctuality</th>
+        <th>Subject Knowledge</th>
+        <th>Discipline/Behavior</th>
+        <th>Methodology of teaching</th>
+        <th>Communication/audibility</th>
+        <th>Syllabus Coverage</th>
+      </tr>
+      {% for teacher, form in Iterators %}
+          <tr>
+            <td>{{ teacher.teacher_name }}</td>
+            <td>{{ teacher.subject_name }}</td>
+            {% for field in form %}
+                <td>
+                  <table>
+                    <tr>
+                      {% for radio in field %}
+                          <td>{{ radio }}</td>
+                      {% endfor %}
+                    </tr>
+                    <tr>
+                      {% for radio in field %}
+                          <td>{{ radio.data.value }}</td>
+                      {% endfor %}
+                    </tr>
+                  </table>
+                </td>
+            {% endfor %}
+          </tr>
+      {% endfor %}
+    </table>
+    <input type="submit" value="Submit">
+</form>
+  </body>
+</html>

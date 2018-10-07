@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}create{% endblock title %}</title>
+  </head>
+  <body>
+    <div class='container'>
+      {% block content%}
+
+
+          <h1>{{title}} is working!</h1>
+
+          {% for obj in objectList %}
+
+           {{obj.Section_name}}
+           {{obj.student_name}}
+           <a href='{{obj.get_absolute_url}}'>{{obj.rollno}}</a>
+           {{obj.teacher_name}}
+           {{obj.teacher_subject}}
+           {{obj.batch}}
+
+           <br>
+          {% endfor %}
+
+      {% endblock content %}
+
+  </body>
+</html>
